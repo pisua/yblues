@@ -1,5 +1,5 @@
-from ycappuccino.core.model.decorators import Item, Property, Empty
-from ycappuccino.core.model.model import Model
+from ycappuccino.storage.models.decorators import Item, Property, Empty
+from ycappuccino.storage.models.model import Model
 
 from datetime import datetime
 

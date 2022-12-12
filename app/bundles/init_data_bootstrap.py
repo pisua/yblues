@@ -1,10 +1,12 @@
-from model.album import Album
-from model.band import Band
-from model.member import Member
-from model.music import Music
-from model.video import Video
-from model.gig import Gig
-from ycappuccino.core.api import IActivityLogger, IManager, IBootStrap, YCappuccino
+from models.album import Album
+from models.band import Band
+from models.member import Member
+from models.music import Music
+from models.video import Video
+from models.gig import Gig
+from ycappuccino.core.api import IActivityLogger,  YCappuccino
+from ycappuccino.storage.api import IManager, IBootStrap
+
 import logging
 from pelix.ipopo.decorators import ComponentFactory, Requires, Validate, Invalidate, Provides, Instantiate
 

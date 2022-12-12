@@ -1,5 +1,5 @@
-from ycappuccino.core.model.decorators import Item, Property, Reference, ItemReference, Empty
-from ycappuccino.core.model.model import Model
+from ycappuccino.storage.models.decorators import Item, Property, Reference, ItemReference, Empty
+from ycappuccino.storage.models.model import Model
 import datetime, time
 
 @Empty()

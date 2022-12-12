@@ -279,7 +279,7 @@ def to_jabsorb(value):
 
 def from_jabsorb(request, seems_raw=False):
     """
-    Transforms a jabsorb request into a more Python data model (converts maps
+    Transforms a jabsorb request into a more Python data models (converts maps
     and lists)
 
     :param request: Data coming from Jabsorb
