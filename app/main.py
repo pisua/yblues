@@ -16,7 +16,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    ycappuccino.core.init(root_path=args.root_path, port=args.port)
+    ycappuccino.core.init(root_path=args.root_path, app="yblues", port=args.port)
     # Run the server
     ycappuccino.core.start()
 

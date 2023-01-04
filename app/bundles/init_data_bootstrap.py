@@ -1,3 +1,5 @@
+#app="yblues"
+
 from models.album import Album
 from models.band import Band
 from models.member import Member
@@ -13,7 +15,6 @@ from pelix.ipopo.decorators import ComponentFactory, Requires, Validate, Invalid
 _logger = logging.getLogger(__name__)
 
 # init data date : 15/05/2021
-
 @ComponentFactory('InitDataBootStrap-Factory')
 @Provides(specifications=[IBootStrap.name, YCappuccino.name])
 @Requires("_log", IActivityLogger.name, spec_filter="'(name=main)'")
