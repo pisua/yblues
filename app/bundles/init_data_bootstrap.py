@@ -12,6 +12,10 @@ from ycappuccino.storage.api import IManager, IBootStrap
 import logging
 from pelix.ipopo.decorators import ComponentFactory, Requires, Validate, Invalidate, Provides, Instantiate
 
+from ycappuccino.endpoints.api import IJwt
+
+from ycappuccino.rest_app_base.models.organization import Organization
+
 _logger = logging.getLogger(__name__)
 
 # init data date : 15/05/2021
@@ -23,7 +27,9 @@ _logger = logging.getLogger(__name__)
 @Requires("_manager_member", IManager.name, spec_filter="'(item_id=member)'")
 @Requires("_manager_music", IManager.name, spec_filter="'(item_id=music)'")
 @Requires("_manager_video", IManager.name, spec_filter="'(item_id=video)'")
+@Requires("_manager_organization", IManager.name, spec_filter="'(item_id=organization)'")
 @Requires("_manager_album", IManager.name, spec_filter="'(item_id=album)'")
+@Requires("_jwt", IJwt.name)
 
 @Instantiate("InitDataBootStrap")
 class InitDataBootStrap(IBootStrap):
@@ -31,14 +37,18 @@ class InitDataBootStrap(IBootStrap):
     def __init__(self):
         super(IBootStrap, self).__init__();
         self._manager_band = None
+        self._manager_organization = None
         self._manager_gig = None
         self._manager_member = None
         self._manager_music = None
         self._manager_video = None
         self._manager_album = None
         self._log = None
+        self._jwt = None
+        self._subject = None
 
     def bootstrap(self):
+        self._init_organization()
         self._init_band()
         self._init_member()
         self._init_gig()
@@ -54,8 +64,8 @@ class InitDataBootStrap(IBootStrap):
         w_member.name("Yaiba (Y)")
         w_member.role("Guitar / Vocals / Lead")
         w_member.band("yblues")
-        if self._manager_member.get_one("member", w_member._id) is None:
-            self._manager_member.up_sert_model(w_member._id, w_member)
+        if self._manager_member.get_one("member", w_member._id, self._subject) is None:
+            self._manager_member.up_sert_model(w_member._id, w_member, self._subject)
 
         # marmotte
         w_member = Member()
@@ -63,8 +73,8 @@ class InitDataBootStrap(IBootStrap):
         w_member.name("Marmotte")
         w_member.role("Bass")
         w_member.band("yblues")
-        if self._manager_member.get_one("member", w_member._id) is None:
-            self._manager_member.up_sert_model(w_member._id, w_member)
+        if self._manager_member.get_one("member", w_member._id, self._subject) is None:
+            self._manager_member.up_sert_model(w_member._id, w_member, self._subject)
 
         #spike
         w_member = Member()
@@ -72,8 +82,8 @@ class InitDataBootStrap(IBootStrap):
         w_member.name("Spike")
         w_member.role("Vocals")
         w_member.band("yblues")
-        if self._manager_member.get_one("member", w_member._id) is None:
-            self._manager_member.up_sert_model(w_member._id, w_member)
+        if self._manager_member.get_one("member", w_member._id, self._subject) is None:
+            self._manager_member.up_sert_model(w_member._id, w_member, self._subject)
 
         #sereb
         w_member = Member()
@@ -81,8 +91,8 @@ class InitDataBootStrap(IBootStrap):
         w_member.name("Sereb")
         w_member.role("Drums")
         w_member.band("yblues")
-        if self._manager_member.get_one("member", w_member._id) is None:
-            self._manager_member.up_sert_model(w_member._id, w_member)
+        if self._manager_member.get_one("member", w_member._id, self._subject) is None:
+            self._manager_member.up_sert_model(w_member._id, w_member, self._subject)
 
     def _init_album(self):
         w_album = Album()
@@ -92,8 +102,8 @@ class InitDataBootStrap(IBootStrap):
         w_album.release_date("30/09/2013")
         w_album.cover("img/picture/cover_arrival_petit.jpg")
         w_album.band("yblues")
-        if self._manager_album.get_one("album", w_album._id) is None:
-            self._manager_album.up_sert_model(w_album._id, w_album)
+        if self._manager_album.get_one("album", w_album._id, self._subject) is None:
+            self._manager_album.up_sert_model(w_album._id, w_album, self._subject)
 
         w_album = Album()
         w_album.id("bttb")
@@ -102,8 +112,8 @@ class InitDataBootStrap(IBootStrap):
         w_album.release_date("15/04/2017")
         w_album.cover("img/picture/cover_bttb_petit.jpg")
         w_album.band("yblues")
-        if self._manager_album.get_one("album", w_album._id) is None:
-            self._manager_album.up_sert_model(w_album._id, w_album)
+        if self._manager_album.get_one("album", w_album._id, self._subject) is None:
+            self._manager_album.up_sert_model(w_album._id, w_album, self._subject)
 
         w_album = Album()
         w_album.id("sb")
@@ -113,8 +123,8 @@ class InitDataBootStrap(IBootStrap):
         w_album.cover("img/picture/cover_singlebarrel_petit.jpg")
 
         w_album.band("yblues")
-        if self._manager_album.get_one("album", w_album._id) is None:
-            self._manager_album.up_sert_model(w_album._id, w_album)
+        if self._manager_album.get_one("album", w_album._id, self._subject) is None:
+            self._manager_album.up_sert_model(w_album._id, w_album, self._subject)
 
     def _init_gig(self):
         w_gigs = []
@@ -127,7 +137,7 @@ class InitDataBootStrap(IBootStrap):
         w_gig.place("")
         w_gig.date("22/10/2022")
         w_gig.bands("Ozaru, Uutil Therapy, Primal Rage, Y.Blues, Les Crêtes Brulées")
-        if self._manager_album.get_one("gig", w_gig._id) is None:
+        if self._manager_album.get_one("gig", w_gig._id, self._subject) is None:
            w_gigs.append(w_gig)
 
         # bl1
@@ -139,7 +149,7 @@ class InitDataBootStrap(IBootStrap):
         w_gig.place("Le Champollion")
         w_gig.date("21/06/2022")
         w_gig.bands("Synapses, Collapse, Y.Blues, Atlasworks")
-        if self._manager_album.get_one("gig", w_gig._id) is None:
+        if self._manager_album.get_one("gig", w_gig._id, self._subject) is None:
             w_gigs.append(w_gig)
 
         w_gig = Gig()
@@ -151,8 +161,8 @@ class InitDataBootStrap(IBootStrap):
         w_gig.date("04/11/2022")
         w_gig.bands("Collapse, Y.Blues, To be announced")
         w_gigs.append(w_gig)
-        if self._manager_album.get_one("gig", w_gig._id) is None:
-            self._manager_gig.up_sert_many_model( w_gigs)
+        if self._manager_album.get_one("gig", w_gig._id, self._subject) is None:
+            self._manager_gig.up_sert_many_model( w_gigs, self._subject)
 
     def _init_music(self):
         self._init_music_arrival()
@@ -171,7 +181,7 @@ class InitDataBootStrap(IBootStrap):
         w_music.arrangment("Marmotte, Sereb")
         w_music.feat("Julien Tournoud")
         w_music.album("bttb", {"numero": 1})
-        if self._manager_music.get_one("music", w_music._id) is None:
+        if self._manager_music.get_one("music", w_music._id, self._subject) is None:
             w_musics.append(w_music)
 
         # Desert
@@ -183,7 +193,7 @@ class InitDataBootStrap(IBootStrap):
         w_music.arrangment("Marmotte, Sereb")
         w_music.feat("Idiocrates Hinet")
         w_music.album("bttb", {"numero": 2})
-        if self._manager_music.get_one("music", w_music._id) is None:
+        if self._manager_music.get_one("music", w_music._id, self._subject) is None:
             w_musics.append(w_music)
 
         # Eternity
@@ -195,7 +205,7 @@ class InitDataBootStrap(IBootStrap):
         w_music.arrangment("Marmotte, Sereb")
         w_music.feat("Spike")
         w_music.album("bttb", {"numero": 3})
-        if self._manager_music.get_one("music", w_music._id) is None:
+        if self._manager_music.get_one("music", w_music._id, self._subject) is None:
             w_musics.append(w_music)
 
         # final Breath
@@ -206,7 +216,7 @@ class InitDataBootStrap(IBootStrap):
         w_music.composer("Yaiba")
         w_music.arrangment("Marmotte, Sereb")
         w_music.album("bttb", {"numero": 4})
-        if self._manager_music.get_one("music", w_music._id) is None:
+        if self._manager_music.get_one("music", w_music._id, self._subject) is None:
             w_musics.append(w_music)
 
         # Injustice for All
@@ -218,7 +228,7 @@ class InitDataBootStrap(IBootStrap):
         w_music.arrangment("Marmotte, Sereb")
         w_music.feat("Bjørn Berge")
         w_music.album("bttb", {"numero": 5})
-        if self._manager_music.get_one("music", w_music._id) is None:
+        if self._manager_music.get_one("music", w_music._id, self._subject) is None:
             w_musics.append(w_music)
 
         # Walking man
@@ -230,7 +240,7 @@ class InitDataBootStrap(IBootStrap):
         w_music.arrangment("Marmotte, Sereb")
         w_music.feat("Barefoot Iano, Madie & Spike")
         w_music.album("bttb", {"numero": 6})
-        if self._manager_music.get_one("music", w_music._id) is None:
+        if self._manager_music.get_one("music", w_music._id, self._subject) is None:
             w_musics.append(w_music)
 
         # Killing the Dragon Platypus
@@ -241,7 +251,7 @@ class InitDataBootStrap(IBootStrap):
         w_music.feat("Fetus")
         w_music.arrangment("Marmotte, Sereb")
         w_music.album("bttb", {"numero": 7})
-        if self._manager_music.get_one("music", w_music._id) is None:
+        if self._manager_music.get_one("music", w_music._id, self._subject) is None:
             w_musics.append(w_music)
 
         # End of Time
@@ -252,7 +262,7 @@ class InitDataBootStrap(IBootStrap):
         w_music.feat("Spike")
         w_music.arrangment("Marmotte, Sereb")
         w_music.album("bttb", {"numero": 8})
-        if self._manager_music.get_one("music", w_music._id) is None:
+        if self._manager_music.get_one("music", w_music._id, self._subject) is None:
             w_musics.append(w_music)
 
         # Broken Legs Pt.2
@@ -263,10 +273,10 @@ class InitDataBootStrap(IBootStrap):
         w_music.feat("Emmanuelson")
         w_music.arrangment("Marmotte, Sereb")
         w_music.album("bttb", {"numero": 9})
-        if self._manager_music.get_one("music", w_music._id) is None:
+        if self._manager_music.get_one("music", w_music._id, self._subject) is None:
             w_musics.append(w_music)
 
-        self._manager_music.up_sert_many_model(w_musics)
+        self._manager_music.up_sert_many_model(w_musics, self._subject)
 
     def _init_music_sb(self):
         # arrival album
@@ -278,7 +288,7 @@ class InitDataBootStrap(IBootStrap):
         w_music.author("Yaiba")
         w_music.composer("Yaiba")
         w_music.album("sb", {"numero": 1})
-        if self._manager_music.get_one("music", w_music._id) is None:
+        if self._manager_music.get_one("music", w_music._id, self._subject) is None:
             w_musics.append(w_music)
         # 45 reasons
         w_music = Music()
@@ -288,7 +298,7 @@ class InitDataBootStrap(IBootStrap):
         w_music.composer("Yaiba")
         w_music.feat("Barefoot Iano")
         w_music.album("sb", {"numero": 2})
-        if self._manager_music.get_one("music", w_music._id) is None:
+        if self._manager_music.get_one("music", w_music._id, self._subject) is None:
             w_musics.append(w_music)
         # app
         w_music = Music()
@@ -298,7 +308,7 @@ class InitDataBootStrap(IBootStrap):
         w_music.composer("Yaiba")
         w_music.feat("Barefoot Iano")
         w_music.album("sb", {"numero": 3})
-        if self._manager_music.get_one("music", w_music._id) is None:
+        if self._manager_music.get_one("music", w_music._id, self._subject) is None:
             w_musics.append(w_music)
         # the arrival
         w_music = Music()
@@ -307,7 +317,7 @@ class InitDataBootStrap(IBootStrap):
         w_music.author("Yaiba")
         w_music.composer("Yaiba")
         w_music.album("sb", {"numero": 4})
-        if self._manager_music.get_one("music", w_music._id) is None:
+        if self._manager_music.get_one("music", w_music._id, self._subject) is None:
             w_musics.append(w_music)
 
         # Desert
@@ -317,7 +327,7 @@ class InitDataBootStrap(IBootStrap):
         w_music.author("Yaiba")
         w_music.composer("Yaiba")
         w_music.album("sb", {"numero": 5})
-        if self._manager_music.get_one("music", w_music._id) is None:
+        if self._manager_music.get_one("music", w_music._id, self._subject) is None:
             w_musics.append(w_music)
 
         # Injustice for All
@@ -328,7 +338,7 @@ class InitDataBootStrap(IBootStrap):
         w_music.composer("Yaiba")
         w_music.feat("Joshua")
         w_music.album("sb", {"numero": 6})
-        if self._manager_music.get_one("music", w_music._id) is None:
+        if self._manager_music.get_one("music", w_music._id, self._subject) is None:
             w_musics.append(w_music)
         # Old N°7
         w_music = Music()
@@ -337,7 +347,7 @@ class InitDataBootStrap(IBootStrap):
         w_music.composer("Yaiba")
         w_music.arrangment("Marmotte, Sereb")
         w_music.album("sb", {"numero": 7})
-        if self._manager_music.get_one("music", w_music._id) is None:
+        if self._manager_music.get_one("music", w_music._id, self._subject) is None:
             w_musics.append(w_music)
         # Hailstones
         w_music = Music()
@@ -345,9 +355,9 @@ class InitDataBootStrap(IBootStrap):
         w_music.name("Hailstones")
         w_music.composer("Yaiba")
         w_music.album("sb", {"numero": 8})
-        if self._manager_music.get_one("music", w_music._id) is None:
+        if self._manager_music.get_one("music", w_music._id, self._subject) is None:
             w_musics.append(w_music)
-        self._manager_music.up_sert_many_model(w_musics)
+        self._manager_music.up_sert_many_model(w_musics, self._subject)
 
     def _init_music_arrival(self):
         # arrival album
@@ -360,7 +370,7 @@ class InitDataBootStrap(IBootStrap):
         w_music.composer("Yaiba")
         w_music.arrangment("Marmotte, Sereb")
         w_music.album("arrival",{"numero": 1})
-        if self._manager_music.get_one("music", w_music._id) is None:
+        if self._manager_music.get_one("music", w_music._id, self._subject) is None:
             w_musics.append(w_music)
         #the thing
         w_music = Music()
@@ -371,7 +381,7 @@ class InitDataBootStrap(IBootStrap):
         w_music.arrangment("Marmotte, Sereb")
         w_music.feat("Benjamin Dupré")
         w_music.album("arrival",{"numero": 2})
-        if self._manager_music.get_one("music", w_music._id) is None:
+        if self._manager_music.get_one("music", w_music._id, self._subject) is None:
             w_musics.append(w_music)
         # mind control
         w_music = Music()
@@ -382,7 +392,7 @@ class InitDataBootStrap(IBootStrap):
         w_music.arrangment("Marmotte, Sereb")
         w_music.feat("Vince")
         w_music.album("arrival",{"numero": 3})
-        if self._manager_album.get_one("music", w_music._id) is None:
+        if self._manager_album.get_one("music", w_music._id, self._subject) is None:
             w_musics.append(w_music)
         # 45 reasons
         w_music = Music()
@@ -392,7 +402,7 @@ class InitDataBootStrap(IBootStrap):
         w_music.composer("Yaiba")
         w_music.arrangment("Marmotte, Sereb")
         w_music.album("arrival",{"numero": 4})
-        if self._manager_music.get_one("music", w_music._id) is None:
+        if self._manager_music.get_one("music", w_music._id, self._subject) is None:
             w_musics.append(w_music)
         # prisoner
         w_music = Music()
@@ -402,7 +412,7 @@ class InitDataBootStrap(IBootStrap):
         w_music.composer("Yaiba")
         w_music.arrangment("Marmotte, Sereb")
         w_music.album("arrival",{"numero": 5})
-        if self._manager_music.get_one("music", w_music._id) is None:
+        if self._manager_music.get_one("music", w_music._id, self._subject) is None:
             w_musics.append(w_music)
 
         # app
@@ -413,7 +423,7 @@ class InitDataBootStrap(IBootStrap):
         w_music.composer("Yaiba")
         w_music.arrangment("Marmotte, Sereb")
         w_music.album("arrival",{"numero": 6})
-        if self._manager_music.get_one("music", w_music._id) is None:
+        if self._manager_music.get_one("music", w_music._id, self._subject) is None:
             w_musics.append(w_music)
         # the arrival
         w_music = Music()
@@ -423,7 +433,7 @@ class InitDataBootStrap(IBootStrap):
         w_music.composer("Yaiba")
         w_music.arrangment("Marmotte, Sereb")
         w_music.album("arrival",{"numero": 7})
-        if self._manager_music.get_one("music", w_music._id) is None:
+        if self._manager_music.get_one("music", w_music._id, self._subject) is None:
             w_musics.append(w_music)
         # prologue
         w_music = Music()
@@ -432,9 +442,9 @@ class InitDataBootStrap(IBootStrap):
         w_music.composer("Yaiba")
         w_music.arrangment("Marmotte, Sereb")
         w_music.album("arrival",{"numero": 8})
-        if self._manager_music.get_one("music", w_music._id) is None:
+        if self._manager_music.get_one("music", w_music._id, self._subject) is None:
             w_musics.append(w_music)
-        self._manager_music.up_sert_many_model(w_musics)
+        self._manager_music.up_sert_many_model(w_musics, self._subject)
 
 
     def _init_video(self):
@@ -445,14 +455,14 @@ class InitDataBootStrap(IBootStrap):
         w_video.name("45 Reasons")
         w_video.music("45reasons")
         w_video.url("https://www.youtube.com/embed/9BNABYtjLR4")
-        if self._manager_video.get_one("video", w_video._id) is None:
+        if self._manager_video.get_one("video", w_video._id, self._subject) is None:
             w_videos.append(w_video)
 
         w_video = Video()
         w_video.id("epicstringbattleforwhisky")
         w_video.name("Epic String Battle for Whisky")
         w_video.url("https://www.youtube.com/embed/fFMl31hB4NU")
-        if self._manager_video.get_one("video", w_video._id) is None:
+        if self._manager_video.get_one("video", w_video._id, self._subject) is None:
             w_videos.append(w_video)
 
         w_video = Video()
@@ -460,14 +470,14 @@ class InitDataBootStrap(IBootStrap):
         w_video.name("Injustice for All")
         w_video.music("injusticeforall")
         w_video.url("https://www.youtube.com/embed/_vcxsC_r3pA")
-        if self._manager_video.get_one("video", w_video._id) is None:
+        if self._manager_video.get_one("video", w_video._id, self._subject) is None:
             w_videos.append(w_video)
         w_video = Video()
         w_video.id("endoftime")
         w_video.name("End of Time")
         w_video.music("endoftime")
         w_video.url("https://www.youtube.com/embed/qBnd0j6rItY")
-        if self._manager_video.get_one("video", w_video._id) is None:
+        if self._manager_video.get_one("video", w_video._id, self._subject) is None:
             w_videos.append(w_video)
 
         w_video = Video()
@@ -475,7 +485,7 @@ class InitDataBootStrap(IBootStrap):
         w_video.name("Broken Legs Pt.2")
         w_video.music("brokenlegspart2")
         w_video.url("https://www.youtube.com/embed/LGiwYy-7nJQ")
-        if self._manager_video.get_one("video", w_video._id) is None:
+        if self._manager_video.get_one("video", w_video._id, self._subject) is None:
             w_videos.append(w_video)
 
         w_video = Video()
@@ -483,64 +493,75 @@ class InitDataBootStrap(IBootStrap):
         w_video.name("The Arrival")
         w_video.music("thearrival")
         w_video.url("https://www.youtube.com/embed/dMChbNTV_rg")
-        if self._manager_video.get_one("video", w_video._id) is None:
+        if self._manager_video.get_one("video", w_video._id, self._subject) is None:
             w_videos.append(w_video)
 
         w_video = Video()
         w_video.id("coverocean")
         w_video.name("Cover Ocean")
         w_video.url("https://www.youtube.com/embed/Rgz36SCXfLA")
-        if self._manager_video.get_one("video", w_video._id) is None:
+        if self._manager_video.get_one("video", w_video._id, self._subject) is None:
             w_videos.append(w_video)
 
         w_video = Video()
         w_video.id("covertrain")
         w_video.name("Cover Train")
         w_video.url("https://www.youtube.com/embed/JiWLMsMgKgY")
-        if self._manager_video.get_one("video", w_video._id) is None:
+        if self._manager_video.get_one("video", w_video._id, self._subject) is None:
             w_videos.append(w_video)
 
         w_video = Video()
         w_video.id("coverdarrycowlchamber")
         w_video.name("Cover Darry Cowl Chamber")
         w_video.url("https://www.youtube.com/embed/QH2mjk7jt30")
-        if self._manager_video.get_one("video", w_video._id) is None:
+        if self._manager_video.get_one("video", w_video._id, self._subject) is None:
             w_videos.append(w_video)
 
         w_video = Video()
         w_video.id("mindcontrol")
         w_video.name("Mind Control")
         w_video.url("https://www.youtube.com/embed/3FM8urVV4WM")
-        if self._manager_video.get_one("video", w_video._id) is None:
+        if self._manager_video.get_one("video", w_video._id, self._subject) is None:
             w_videos.append(w_video)
 
         w_video = Video()
         w_video.id("aceofspades")
         w_video.name("Ace of Spades")
         w_video.url("https://www.youtube.com/embed/QDig_XMT1a8")
-        if self._manager_video.get_one("video", w_video._id) is None:
+        if self._manager_video.get_one("video", w_video._id, self._subject) is None:
             w_videos.append(w_video)
 
         w_video = Video()
         w_video.id("teaseryblues")
         w_video.name("Teaser")
         w_video.url("https://www.youtube.com/embed/X8nXyU7ziss")
-        if self._manager_video.get_one("video", w_video._id) is None:
+        if self._manager_video.get_one("video", w_video._id, self._subject) is None:
             w_videos.append(w_video)
-        self._manager_video.up_sert_many_model(w_videos)
+        self._manager_video.up_sert_many_model(w_videos, self._subject)
 
     def _init_band(self):
         w_band = Band()
         w_band.id("yblues")
         w_band.name("Y.Blues")
         w_band.bio("Le Jack Blues Metal, mélange (vieilli en fût) de blues moderne au bottleneck et de metal des plus sauvage, est né lorsque les membre de Y.Blues (prononcez « Ouaille Blouze ») ont compris qu'il pouvaient faire mieux ensemble que de seulement se mettre la gueule au wiskey. Avec Yaiba à la guitare acoustique et au chant, Marmotte à la basse et Sereb à la batterie, parfois groovy, parfois bourrin et même par moment absurde, Y.Blues garanti de nombreuses émotions souvent incompatibles.")
-        if self._manager_band.get_one("band", w_band._id) is None:
-            self._manager_band.up_sert_model(w_band._id, w_band)
+        if self._manager_band.get_one("band", w_band._id, self._subject) is None:
+            self._manager_band.up_sert_model(w_band._id, w_band, self._subject)
+
+    def _init_organization(self):
+        w_org = Organization()
+        w_org.id("yblues")
+        w_org.name("Y.Blues")
+        w_org.father("system")
+
+        if self._manager_organization.get_one("organization", w_org._id, self._subject) is None:
+            self._manager_organization.up_sert_model(w_org._id, w_org, self._subject)
 
     @Validate
     def validate(self, context):
         _logger.info("AccountBootStrap validating")
         try:
+            self._subject = self._jwt.get_token_subject("bootstrap", "yblues")
+
             self.bootstrap()
         except Exception as e:
             _logger.error("AccountBootStrap Error {}".format(e))

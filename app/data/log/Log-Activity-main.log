@@ -1,0 +1,149 @@
+2023-01-20 10:22:33,947;INFO;MainThread;proxy.py;proxy;validate;(47);serverProxy validating
+2023-01-20 10:22:33,947;INFO;MainThread;proxy.py;proxy;validate;(49);serverProxy validated
+2023-01-20 10:22:33,964;INFO;MainThread;server_path.py;server_path;validate;(138);ClientPathSwagger validating
+2023-01-20 10:22:33,964;INFO;MainThread;server_path.py;server_path;validate;(141);ClientPathSwagger validated
+2023-01-20 10:22:34,019;INFO;MainThread;jwt.py;jwt;validate;(98);Endpoint validating
+2023-01-20 10:22:34,025;INFO;MainThread;jwt.py;jwt;validate;(104);Endpoint validated
+2023-01-20 10:22:34,036;INFO;MainThread;endpoints.py;endpoints;validate;(249);Endpoint validating
+2023-01-20 10:22:34,054;INFO;MainThread;endpoints.py;endpoints;validate;(258);Endpoint validated
+2023-01-20 10:22:35,916;INFO;MainThread;managers.py;managers;validate;(596);Manager default validating
+2023-01-20 10:22:35,934;INFO;MainThread;managers.py;managers;validate;(603);Manager default validated
+2023-01-20 10:22:35,946;INFO;MainThread;item_manager.py;item_manager;validate;(111);Manager validating
+2023-01-20 10:22:35,952;INFO;MainThread;item_manager.py;item_manager;validate;(119);Manager validated
+2023-01-20 10:22:45,276;INFO;MainThread;storage.py;storage;validate;(166);MongoStorage validating
+2023-01-20 10:22:45,922;INFO;MainThread;storage.py;storage;validate;(181);MongoStorage validated
+2023-01-20 10:22:49,777;INFO;MainThread;indexEndpoint.py;indexEndpoint;validate;(293);validating...
+2023-01-20 10:22:49,796;INFO;MainThread;indexEndpoint.py;indexEndpoint;validate;(294);validated
+2023-01-20 10:22:50,929;INFO;MainThread;endpoint_storage.py;endpoint_storage;validate;(303);HandlerEndpointStorage validating
+2023-01-20 10:22:50,930;INFO;MainThread;endpoint_storage.py;endpoint_storage;validate;(312);HandlerEndpointStorage validated
+2023-01-20 10:22:59,968;INFO;MainThread;item_manager.py;item_manager;load_item;(104);add item sensor
+2023-01-20 10:22:59,974;INFO;MainThread;managers.py;managers;create_proxy_manager;(583);create proxy sensor
+2023-01-20 10:22:59,981;INFO;MainThread;managers.py;managers;validate;(536);proxyManager sensor validating
+2023-01-20 10:22:59,987;INFO;MainThread;managers.py;managers;validate;(544);proxyManager sensor validated
+2023-01-20 10:22:59,994;INFO;MainThread;managers.py;managers;create_proxy_manager;(586);end create proxy sensor
+2023-01-20 10:23:00,000;INFO;MainThread;item_manager.py;item_manager;load_item;(104);add item measure
+2023-01-20 10:23:00,000;INFO;MainThread;managers.py;managers;create_proxy_manager;(583);create proxy measure
+2023-01-20 10:23:00,006;INFO;MainThread;managers.py;managers;validate;(536);proxyManager measure validating
+2023-01-20 10:23:00,013;INFO;MainThread;managers.py;managers;validate;(544);proxyManager measure validated
+2023-01-20 10:23:00,031;INFO;MainThread;managers.py;managers;create_proxy_manager;(586);end create proxy measure
+2023-01-20 10:23:00,044;INFO;MainThread;item_manager.py;item_manager;load_item;(104);add item device
+2023-01-20 10:23:00,057;INFO;MainThread;managers.py;managers;create_proxy_manager;(583);create proxy device
+2023-01-20 10:23:00,063;INFO;MainThread;managers.py;managers;validate;(536);proxyManager device validating
+2023-01-20 10:23:00,070;INFO;MainThread;managers.py;managers;validate;(544);proxyManager device validated
+2023-01-20 10:23:00,089;INFO;MainThread;managers.py;managers;create_proxy_manager;(586);end create proxy device
+2023-01-20 10:23:00,096;INFO;MainThread;item_manager.py;item_manager;load_item;(104);add item channel
+2023-01-20 10:23:00,102;INFO;MainThread;managers.py;managers;create_proxy_manager;(583);create proxy channel
+2023-01-20 10:23:00,114;INFO;MainThread;managers.py;managers;validate;(536);proxyManager channel validating
+2023-01-20 10:23:00,120;INFO;MainThread;managers.py;managers;validate;(544);proxyManager channel validated
+2023-01-20 10:23:00,121;INFO;MainThread;managers.py;managers;create_proxy_manager;(586);end create proxy channel
+2023-01-20 10:23:00,140;INFO;MainThread;item_manager.py;item_manager;load_item;(104);add item actuator
+2023-01-20 10:23:00,147;INFO;MainThread;managers.py;managers;create_proxy_manager;(583);create proxy actuator
+2023-01-20 10:23:00,154;INFO;MainThread;managers.py;managers;validate;(536);proxyManager actuator validating
+2023-01-20 10:23:00,166;INFO;MainThread;managers.py;managers;validate;(544);proxyManager actuator validated
+2023-01-20 10:23:00,180;INFO;MainThread;managers.py;managers;create_proxy_manager;(586);end create proxy actuator
+2023-01-20 10:23:00,185;INFO;MainThread;item_manager.py;item_manager;load_item;(104);add item setting
+2023-01-20 10:23:00,190;INFO;MainThread;managers.py;managers;create_proxy_manager;(583);create proxy setting
+2023-01-20 10:23:00,196;INFO;MainThread;managers.py;managers;validate;(536);proxyManager setting validating
+2023-01-20 10:23:00,212;INFO;MainThread;managers.py;managers;validate;(544);proxyManager setting validated
+2023-01-20 10:23:00,220;INFO;MainThread;managers.py;managers;create_proxy_manager;(586);end create proxy setting
+2023-01-20 10:23:00,227;INFO;MainThread;item_manager.py;item_manager;load_item;(104);add item media
+2023-01-20 10:23:00,227;INFO;MainThread;managers.py;managers;create_proxy_manager;(583);create proxy media
+2023-01-20 10:23:00,240;INFO;MainThread;managers.py;managers;validate;(536);proxyManager media validating
+2023-01-20 10:23:00,253;INFO;MainThread;managers.py;managers;validate;(544);proxyManager media validated
+2023-01-20 10:23:00,276;INFO;MainThread;managers.py;managers;create_proxy_manager;(586);end create proxy media
+2023-01-20 10:23:00,282;INFO;MainThread;item_manager.py;item_manager;load_item;(104);add item layout
+2023-01-20 10:23:00,308;INFO;MainThread;managers.py;managers;create_proxy_manager;(583);create proxy layout
+2023-01-20 10:23:00,314;INFO;MainThread;managers.py;managers;validate;(536);proxyManager layout validating
+2023-01-20 10:23:00,320;INFO;MainThread;managers.py;managers;validate;(544);proxyManager layout validated
+2023-01-20 10:23:00,334;INFO;MainThread;managers.py;managers;create_proxy_manager;(586);end create proxy layout
+2023-01-20 10:23:00,347;INFO;MainThread;item_manager.py;item_manager;load_item;(104);add item clientPath
+2023-01-20 10:23:00,358;INFO;MainThread;managers.py;managers;create_proxy_manager;(583);create proxy clientPath
+2023-01-20 10:23:00,372;INFO;MainThread;managers.py;managers;validate;(536);proxyManager clientPath validating
+2023-01-20 10:23:00,373;INFO;MainThread;managers.py;managers;validate;(544);proxyManager clientPath validated
+2023-01-20 10:23:00,380;INFO;MainThread;server_path.py;server_path;validate;(63);ClientPathFactory validating
+2023-01-20 10:23:00,468;INFO;MainThread;server_path.py;server_path;validate;(73);ClientPath validating
+2023-01-20 10:23:00,475;INFO;MainThread;server_path.py;server_path;validate;(76);ClientPath validated
+2023-01-20 10:23:00,494;INFO;MainThread;server_path.py;server_path;validate;(73);ClientPath validating
+2023-01-20 10:23:00,494;INFO;MainThread;server_path.py;server_path;validate;(76);ClientPath validated
+2023-01-20 10:23:00,496;INFO;MainThread;server_path.py;server_path;validate;(66);ClientPathFactory validated
+2023-01-20 10:23:00,502;INFO;MainThread;managers.py;managers;create_proxy_manager;(586);end create proxy clientPath
+2023-01-20 10:23:00,509;INFO;MainThread;item_manager.py;item_manager;load_item;(104);add item role
+2023-01-20 10:23:00,515;INFO;MainThread;managers.py;managers;create_proxy_manager;(583);create proxy role
+2023-01-20 10:23:00,541;INFO;MainThread;managers.py;managers;validate;(536);proxyManager role validating
+2023-01-20 10:23:00,546;INFO;MainThread;managers.py;managers;validate;(544);proxyManager role validated
+2023-01-20 10:23:00,548;INFO;MainThread;managers.py;managers;create_proxy_manager;(586);end create proxy role
+2023-01-20 10:23:00,572;INFO;MainThread;item_manager.py;item_manager;load_item;(104);add item permission
+2023-01-20 10:23:00,591;INFO;MainThread;managers.py;managers;create_proxy_manager;(583);create proxy permission
+2023-01-20 10:23:00,597;INFO;MainThread;managers.py;managers;validate;(536);proxyManager permission validating
+2023-01-20 10:23:00,609;INFO;MainThread;managers.py;managers;validate;(544);proxyManager permission validated
+2023-01-20 10:23:00,616;INFO;MainThread;managers.py;managers;create_proxy_manager;(586);end create proxy permission
+2023-01-20 10:23:00,628;INFO;MainThread;item_manager.py;item_manager;load_item;(104);add item rolePermission
+2023-01-20 10:23:00,642;INFO;MainThread;managers.py;managers;create_proxy_manager;(583);create proxy rolePermission
+2023-01-20 10:23:00,648;INFO;MainThread;managers.py;managers;validate;(536);proxyManager rolePermission validating
+2023-01-20 10:23:00,649;INFO;MainThread;managers.py;managers;validate;(544);proxyManager rolePermission validated
+2023-01-20 10:23:00,655;INFO;MainThread;managers.py;managers;create_proxy_manager;(586);end create proxy rolePermission
+2023-01-20 10:23:00,661;INFO;MainThread;item_manager.py;item_manager;load_item;(104);add item organization
+2023-01-20 10:23:00,672;INFO;MainThread;managers.py;managers;create_proxy_manager;(583);create proxy organization
+2023-01-20 10:23:00,672;INFO;MainThread;managers.py;managers;validate;(536);proxyManager organization validating
+2023-01-20 10:23:00,679;INFO;MainThread;managers.py;managers;validate;(544);proxyManager organization validated
+2023-01-20 10:23:00,691;INFO;MainThread;tenant_service.py;tenant_service;validate;(90);TenantService validating
+2023-01-20 10:23:00,780;INFO;MainThread;tenant_service.py;tenant_service;validate;(99);TenantService validated
+2023-01-20 10:23:00,787;INFO;MainThread;managers.py;managers;create_proxy_manager;(586);end create proxy organization
+2023-01-20 10:23:00,798;INFO;MainThread;item_manager.py;item_manager;load_item;(104);add item account
+2023-01-20 10:23:00,804;INFO;MainThread;managers.py;managers;create_proxy_manager;(583);create proxy account
+2023-01-20 10:23:00,805;INFO;MainThread;managers.py;managers;validate;(536);proxyManager account validating
+2023-01-20 10:23:00,806;INFO;MainThread;managers.py;managers;validate;(544);proxyManager account validated
+2023-01-20 10:23:00,813;INFO;MainThread;managers.py;managers;create_proxy_manager;(586);end create proxy account
+2023-01-20 10:23:00,837;INFO;MainThread;item_manager.py;item_manager;load_item;(104);add item roleAccount
+2023-01-20 10:23:00,849;INFO;MainThread;managers.py;managers;create_proxy_manager;(583);create proxy roleAccount
+2023-01-20 10:23:00,855;INFO;MainThread;managers.py;managers;validate;(536);proxyManager roleAccount validating
+2023-01-20 10:23:00,855;INFO;MainThread;managers.py;managers;validate;(544);proxyManager roleAccount validated
+2023-01-20 10:23:00,857;INFO;MainThread;managers.py;managers;create_proxy_manager;(586);end create proxy roleAccount
+2023-01-20 10:23:00,863;INFO;MainThread;item_manager.py;item_manager;load_item;(104);add item login
+2023-01-20 10:23:00,869;INFO;MainThread;managers.py;managers;create_proxy_manager;(583);create proxy login
+2023-01-20 10:23:00,881;INFO;MainThread;managers.py;managers;validate;(536);proxyManager login validating
+2023-01-20 10:23:00,899;INFO;MainThread;managers.py;managers;validate;(544);proxyManager login validated
+2023-01-20 10:23:00,905;INFO;MainThread;login_services.py;login_services;validate;(224);LoginCookieService validating
+2023-01-20 10:23:00,911;INFO;MainThread;login_services.py;login_services;validate;(226);LoginCookieService validated
+2023-01-20 10:23:00,911;INFO;MainThread;core_bootstrap.py;core_bootstrap;validate;(110);AccountBootStrap validating
+2023-01-20 10:23:01,258;INFO;MainThread;core_bootstrap.py;core_bootstrap;validate;(117);AccountBootStrap validated
+2023-01-20 10:23:01,278;INFO;MainThread;login_services.py;login_services;validate;(167);ChangePasswordService validating
+2023-01-20 10:23:01,279;INFO;MainThread;login_services.py;login_services;validate;(169);ChangePasswordService validated
+2023-01-20 10:23:01,297;INFO;MainThread;login_services.py;login_services;validate;(108);LoginService validating
+2023-01-20 10:23:01,316;INFO;MainThread;login_services.py;login_services;validate;(110);LoginService validated
+2023-01-20 10:23:01,323;INFO;MainThread;managers.py;managers;create_proxy_manager;(586);end create proxy login
+2023-01-20 10:23:01,335;INFO;MainThread;item_manager.py;item_manager;load_item;(104);add item band
+2023-01-20 10:23:01,347;INFO;MainThread;managers.py;managers;create_proxy_manager;(583);create proxy band
+2023-01-20 10:23:01,354;INFO;MainThread;managers.py;managers;validate;(536);proxyManager band validating
+2023-01-20 10:23:01,367;INFO;MainThread;managers.py;managers;validate;(544);proxyManager band validated
+2023-01-20 10:23:01,380;INFO;MainThread;managers.py;managers;create_proxy_manager;(586);end create proxy band
+2023-01-20 10:23:01,387;INFO;MainThread;item_manager.py;item_manager;load_item;(104);add item gig
+2023-01-20 10:23:01,387;INFO;MainThread;managers.py;managers;create_proxy_manager;(583);create proxy gig
+2023-01-20 10:23:01,393;INFO;MainThread;managers.py;managers;validate;(536);proxyManager gig validating
+2023-01-20 10:23:01,405;INFO;MainThread;managers.py;managers;validate;(544);proxyManager gig validated
+2023-01-20 10:23:01,419;INFO;MainThread;managers.py;managers;create_proxy_manager;(586);end create proxy gig
+2023-01-20 10:23:01,432;INFO;MainThread;item_manager.py;item_manager;load_item;(104);add item member
+2023-01-20 10:23:01,437;INFO;MainThread;managers.py;managers;create_proxy_manager;(583);create proxy member
+2023-01-20 10:23:01,443;INFO;MainThread;managers.py;managers;validate;(536);proxyManager member validating
+2023-01-20 10:23:01,443;INFO;MainThread;managers.py;managers;validate;(544);proxyManager member validated
+2023-01-20 10:23:01,451;INFO;MainThread;managers.py;managers;create_proxy_manager;(586);end create proxy member
+2023-01-20 10:23:01,463;INFO;MainThread;item_manager.py;item_manager;load_item;(104);add item music
+2023-01-20 10:23:01,471;INFO;MainThread;managers.py;managers;create_proxy_manager;(583);create proxy music
+2023-01-20 10:23:01,488;INFO;MainThread;managers.py;managers;validate;(536);proxyManager music validating
+2023-01-20 10:23:01,494;INFO;MainThread;managers.py;managers;validate;(544);proxyManager music validated
+2023-01-20 10:23:01,502;INFO;MainThread;managers.py;managers;create_proxy_manager;(586);end create proxy music
+2023-01-20 10:23:01,514;INFO;MainThread;item_manager.py;item_manager;load_item;(104);add item lyric
+2023-01-20 10:23:01,521;INFO;MainThread;managers.py;managers;create_proxy_manager;(583);create proxy lyric
+2023-01-20 10:23:01,527;INFO;MainThread;managers.py;managers;validate;(536);proxyManager lyric validating
+2023-01-20 10:23:01,540;INFO;MainThread;managers.py;managers;validate;(544);proxyManager lyric validated
+2023-01-20 10:23:01,547;INFO;MainThread;managers.py;managers;create_proxy_manager;(586);end create proxy lyric
+2023-01-20 10:23:01,559;INFO;MainThread;item_manager.py;item_manager;load_item;(104);add item album
+2023-01-20 10:23:01,565;INFO;MainThread;managers.py;managers;create_proxy_manager;(583);create proxy album
+2023-01-20 10:23:01,572;INFO;MainThread;managers.py;managers;validate;(536);proxyManager album validating
+2023-01-20 10:23:01,578;INFO;MainThread;managers.py;managers;validate;(544);proxyManager album validated
+2023-01-20 10:23:01,597;INFO;MainThread;managers.py;managers;create_proxy_manager;(586);end create proxy album
+2023-01-20 10:23:01,603;INFO;MainThread;item_manager.py;item_manager;load_item;(104);add item video
+2023-01-20 10:23:01,604;INFO;MainThread;managers.py;managers;create_proxy_manager;(583);create proxy video
+2023-01-20 10:23:01,610;INFO;MainThread;managers.py;managers;validate;(536);proxyManager video validating
+2023-01-20 10:23:01,617;INFO;MainThread;managers.py;managers;validate;(544);proxyManager video validated
+2023-01-20 10:23:02,386;INFO;MainThread;managers.py;managers;create_proxy_manager;(586);end create proxy video
