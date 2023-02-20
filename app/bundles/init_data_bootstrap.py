@@ -7,6 +7,7 @@ from models.music import Music
 from models.video import Video
 from models.gig import Gig
 from ycappuccino.core.api import IActivityLogger,  YCappuccino
+from ycappuccino.core.decorator_app import App
 from ycappuccino.storage.api import IManager, IBootStrap
 
 import logging
@@ -30,7 +31,7 @@ _logger = logging.getLogger(__name__)
 @Requires("_manager_organization", IManager.name, spec_filter="'(item_id=organization)'")
 @Requires("_manager_album", IManager.name, spec_filter="'(item_id=album)'")
 @Requires("_jwt", IJwt.name)
-
+@App(name="yblues")
 @Instantiate("InitDataBootStrap")
 class InitDataBootStrap(IBootStrap):
 

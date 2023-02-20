@@ -1,5 +1,6 @@
 from ycappuccino.storage.models.decorators import Item,  Property, Reference, ItemReference, Empty
 from ycappuccino.storage.models.model import Model
+from ycappuccino.core.decorator_app import App
 
 @Empty()
 def empty():
@@ -10,8 +11,8 @@ def empty():
     _empty.band("yblues")
     return _empty
 
-
-@Item(collection="members",plural="members",name="member", secure_write=True, app="yblues")
+@App(name="yblues")
+@Item(collection="members",plural="members",name="member", secure_write=True)
 @ItemReference(from_name="member",field="band", item="band")
 class Member(Model):
     def __init__(self, a_dict=None):

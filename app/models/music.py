@@ -1,5 +1,6 @@
 from ycappuccino.storage.models.decorators import Item, Property, Reference, ItemReference, Empty
 from ycappuccino.storage.models.model import Model
+from ycappuccino.core.decorator_app import App
 
 @Empty()
 def empty():
@@ -14,8 +15,8 @@ def empty():
     _empty.album("opus")
     return _empty
 
-
-@Item(collection="musics",plural="musics",name="music", secure_write=True, app="yblues")
+@App(name="yblues")
+@Item(collection="musics",plural="musics",name="music", secure_write=True)
 @ItemReference(from_name="music",field="album", item="album")
 class Music(Model):
     """ bean that represent a music of an album(or not) """
