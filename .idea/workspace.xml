@@ -23,14 +23,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ecd8edd5-fdf8-4543-939d-4d4331c54b88" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/ycappuccino/iot/bundles/clients/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/ycappuccino/iot/bundles/clients/ethernet_ip.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/ycappuccino/iot/bundles/clients/modbus.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/ycappuccino/iot/bundles/clients/opcua.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/ycappuccino/iot/bundles/clients/storage.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/ycappuccino/core/executor_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/ycappuccino/core/executor_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/ycappuccino/mongo/bundles/storage.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/ycappuccino/mongo/bundles/storage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/data/log/Log-Activity-main.log" beforeDir="false" afterPath="$PROJECT_DIR$/app/data/log/Log-Activity-main.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ycappuccino" beforeDir="false" afterPath="$PROJECT_DIR$/app/ycappuccino" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ycappuccino/rest_app_base/bundles/core_bootstrap.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/ycappuccino/rest_app_base/bundles/core_bootstrap.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ycappuccino/rest_app_base/bundles/jwt.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/ycappuccino/rest_app_base/bundles/jwt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ycappuccino/rest_app_base/models/role_permission.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/ycappuccino/rest_app_base/models/role_permission.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,11 +72,11 @@
       <recent name="$PROJECT_DIR$/app/ycappuccino/storage/models" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/ycappuccino/rest_app_base/bundles" />
       <recent name="$PROJECT_DIR$/app/ycappuccino/iot/bundles/services" />
       <recent name="$PROJECT_DIR$/app/ycappuccino/core/tests" />
       <recent name="$PROJECT_DIR$/app/ycappuccino/rest_app_base/bundles/services" />
       <recent name="$PROJECT_DIR$/app/ycappuccino/rest_app_base/models" />
-      <recent name="$PROJECT_DIR$/app/ycappuccino/core/bundles/angularjs" />
     </key>
   </component>
   <component name="RunManager">
@@ -90,6 +88,7 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
+      <option name="SDK_NAME" value="Python 3.9 (yblues-old)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app/" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -180,11 +179,6 @@
           <url>file://$PROJECT_DIR$/venv/lib/python3.9/site-packages/jwt/api_jwt.py</url>
           <line>218</line>
           <option name="timeStamp" value="78" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/ycappuccino/core/utils.py</url>
-          <line>65</line>
-          <option name="timeStamp" value="94" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app/ycappuccino/core/utils.py</url>
