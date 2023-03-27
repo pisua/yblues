@@ -725,7 +725,7 @@ SERVICE_RSA_EVENT_LISTENER = "pelix.rsa.remoteserviceadmineventlistener"
 class RemoteServiceAdminListener(object):
     # pylint: disable=R0903
     """
-    Remote service admin listener service interface.  Services
+    Remote service client_pyscript_core listener service interface.  Services
     registered with this as service specification will have this method
     called synchronously by the RSA implementation for notification
     of RSA events.  The event parameter will be of type
@@ -748,7 +748,7 @@ class RemoteServiceAdminListener(object):
 # ------------------------------------------------------------------------------
 class RemoteServiceAdminEvent(object):
     """
-    Remote service admin event instances are delivered to
+    Remote service client_pyscript_core event instances are delivered to
     RemoteServiceAdminListener service instances when events of the types
     listed below occur... e.g. IMPORT_REGISTRATION when a successful import
     occurs, EXPORT_REGISTRATION when a successful export occurs, etc.

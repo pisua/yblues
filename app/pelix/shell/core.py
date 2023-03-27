@@ -380,13 +380,13 @@ class _ShellService(parser.Shell):
 
     def bundles_list(self, io_handler, name=None):
         """
-        Lists the bundles in the framework and their state. Possibility to
+        Lists the ycappuccino in the framework and their state. Possibility to
         filter on the bundle name.
         """
         # Head of the table
         headers = ("ID", "Name", "State", "Version")
 
-        # Get the bundles
+        # Get the ycappuccino
         bundles = self._context.get_bundles()
 
         # The framework is not in the result of get_bundles()
@@ -418,9 +418,9 @@ class _ShellService(parser.Shell):
         io_handler.write(self._utils.make_table(headers, lines))
 
         if name is None:
-            io_handler.write_line("{0} bundles installed", len(lines))
+            io_handler.write_line("{0} ycappuccino installed", len(lines))
         else:
-            io_handler.write_line("{0} filtered bundles", len(lines))
+            io_handler.write_line("{0} filtered ycappuccino", len(lines))
 
     @Completion(SERVICE)
     def service_details(self, io_handler, service_id):
@@ -749,7 +749,7 @@ class _ShellService(parser.Shell):
     @Completion(BUNDLE, multiple=True)
     def start(self, io_handler, bundle_id, *bundles_ids):
         """
-        Starts the bundles with the given IDs. Stops on first failure.
+        Starts the ycappuccino with the given IDs. Stops on first failure.
         """
         for bid in (bundle_id,) + bundles_ids:
             try:
@@ -775,7 +775,7 @@ class _ShellService(parser.Shell):
     @Completion(BUNDLE, multiple=True)
     def stop(self, io_handler, bundle_id, *bundles_ids):
         """
-        Stops the bundles with the given IDs. Stops on first failure.
+        Stops the ycappuccino with the given IDs. Stops on first failure.
         """
         for bid in (bundle_id,) + bundles_ids:
             bundle = self.__get_bundle(io_handler, bid)
@@ -794,7 +794,7 @@ class _ShellService(parser.Shell):
     @Completion(BUNDLE, multiple=True)
     def update(self, io_handler, bundle_id, *bundles_ids):
         """
-        Updates the bundles with the given IDs. Stops on first failure.
+        Updates the ycappuccino with the given IDs. Stops on first failure.
         """
         for bid in (bundle_id,) + bundles_ids:
             bundle = self.__get_bundle(io_handler, bid)
@@ -821,7 +821,7 @@ class _ShellService(parser.Shell):
     @Completion(BUNDLE, multiple=True)
     def uninstall(self, io_handler, bundle_id, *bundles_ids):
         """
-        Uninstalls the bundles with the given IDs. Stops on first failure.
+        Uninstalls the ycappuccino with the given IDs. Stops on first failure.
         """
         for bid in (bundle_id,) + bundles_ids:
             bundle = self.__get_bundle(io_handler, bid)

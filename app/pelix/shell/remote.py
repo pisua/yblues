@@ -652,7 +652,7 @@ def main(argv=None):
     # Handle arguments
     init = handle_common_arguments(args)
 
-    # Set the initial bundles
+    # Set the initial ycappuccino
     bundles = [
         "pelix.ipopo.core",
         "pelix.shell.core",

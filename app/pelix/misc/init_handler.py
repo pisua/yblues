@@ -87,9 +87,9 @@ class _Configuration(object):
     @property
     def bundles(self):
         """
-        Returns the list of bundles to install and start
+        Returns the list of ycappuccino to install and start
 
-        :return: A list of names of bundles
+        :return: A list of names of ycappuccino
         """
         return self._bundles
 
@@ -172,25 +172,25 @@ class _Configuration(object):
 
     def add_bundles(self, bundles):
         """
-        Adds a list of bundles to install.
+        Adds a list of ycappuccino to install.
 
-        Contrary to paths and environment variables, the bundles are kept in
+        Contrary to paths and environment variables, the ycappuccino are kept in
         the system-wide to user-specific order.
 
-        :param bundles: A list of bundles to install
+        :param bundles: A list of ycappuccino to install
         """
         if bundles:
             self._bundles.extend(bundles)
 
     def set_bundles(self, bundles):
         """
-        Adds a list of bundles to install.
+        Adds a list of ycappuccino to install.
         Previous names from configuration files are cleared.
 
-        Contrary to paths and environment variables, the bundles are kept in
+        Contrary to paths and environment variables, the ycappuccino are kept in
         the system-wide to user-specific order.
 
-        :param bundles: A list of bundles to install
+        :param bundles: A list of ycappuccino to install
         """
         del self._bundles[:]
         self.add_bundles(bundles)
@@ -223,7 +223,7 @@ class _Configuration(object):
     def normalize(self):
         """
         Normalizes environment variables, paths and filters the lists of
-        bundles to install and start.
+        ycappuccino to install and start.
 
         After this call, the environment variables of this process will have
         been updated.
@@ -238,7 +238,7 @@ class _Configuration(object):
             if os.path.exists(path)
         )
 
-        # Normalize the lists of bundles
+        # Normalize the lists of ycappuccino
         self._bundles = remove_duplicates(self._bundles)
 
 
@@ -268,7 +268,7 @@ class InitFileHandler(object):
     @property
     def bundles(self):
         """
-        :return: The list of names of bundles to install and start
+        :return: The list of names of ycappuccino to install and start
         """
         return self.__state.bundles
 
@@ -332,7 +332,7 @@ class InitFileHandler(object):
             "properties",
             "environment",
             "paths",
-            "bundles",
+            "ycappuccino",
             "components",
         ):
             # Check if current values must be reset
@@ -373,7 +373,7 @@ class InitFileHandler(object):
         .. note::
            This method requires the iPOPO core service to be registered.
            This means that the ``pelix.ipopo.core`` must have been declared in
-           the list of bundles (or installed and started programmatically).
+           the list of ycappuccino (or installed and started programmatically).
 
         :param context: A :class:`~pelix.framework.BundleContext` object
         :raise BundleException: Error looking for the iPOPO service or

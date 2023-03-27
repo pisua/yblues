@@ -399,7 +399,7 @@ class ServiceReference(object):
 
     def get_using_bundles(self):
         """
-        Returns the list of bundles that use this service
+        Returns the list of ycappuccino that use this service
 
         :return: A list of Bundle objects
         """
@@ -970,7 +970,7 @@ class ServiceRegistry(object):
     """
     Service registry for Pelix.
 
-    Associates service references to instances and bundles.
+    Associates service references to instances and ycappuccino.
     """
 
     def __init__(self, framework, logger=None):

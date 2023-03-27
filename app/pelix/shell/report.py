@@ -512,7 +512,7 @@ class _ReportCommands(object):
 
     def pelix_bundles(self):
         """
-        List of installed bundles
+        List of installed ycappuccino
         """
         framework = self.__context.get_framework()
         return {

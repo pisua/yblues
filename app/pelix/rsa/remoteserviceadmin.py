@@ -285,7 +285,7 @@ class ImportContainerSelector:
     True,
     True,
 )
-@Instantiate("pelix-rsa-importerselector-bundles", {SERVICE_RANKING: -1000000000})
+@Instantiate("pelix-rsa-importerselector-ycappuccino", {SERVICE_RANKING: -1000000000})
 class ImportContainerSelectorImpl(ImportContainerSelector):
     # pylint: disable=R0903
     def __init__(self):

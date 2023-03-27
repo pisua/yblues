@@ -414,7 +414,7 @@ class Bundle(object):
         if self.__framework._state not in (Bundle.STARTING, Bundle.ACTIVE):
             # Framework is not running
             raise BundleException(
-                "Framework must be started before its bundles"
+                "Framework must be started before its ycappuccino"
             )
 
         with self._lock:
@@ -789,9 +789,9 @@ class Framework(Bundle):
     def get_bundles(self):
         # type: () -> List[Bundle]
         """
-        Returns the list of all installed bundles
+        Returns the list of all installed ycappuccino
 
-        :return: the list of all installed bundles
+        :return: the list of all installed ycappuccino
         """
         with self.__bundles_lock:
             return [
@@ -949,7 +949,7 @@ class Framework(Bundle):
         :param path: Path of the package (folder)
         :param recursive: If True, install the sub-packages too
         :param prefix: (**internal**) Prefix for all found modules
-        :return: A 2-tuple, with the list of installed bundles and the list
+        :return: A 2-tuple, with the list of installed ycappuccino and the list
                  of failed modules names
         :raise ValueError: Invalid path
         """
@@ -1013,7 +1013,7 @@ class Framework(Bundle):
         :param path: Root search path
         :param visitor: The visiting callable
         :param prefix: (**internal**) Prefix for all found modules
-        :return: A 2-tuple, with the list of installed bundles and the list
+        :return: A 2-tuple, with the list of installed ycappuccino and the list
                  of failed modules names
         :raise ValueError: Invalid path or visitor
         """
@@ -1170,7 +1170,7 @@ class Framework(Bundle):
                 BundleEvent(BundleEvent.STARTING, self)
             )
 
-            # Start all registered bundles (use a copy, just in case...)
+            # Start all registered ycappuccino (use a copy, just in case...)
             for bundle in self.__bundles.copy().values():
                 try:
                     bundle.start()
@@ -1242,7 +1242,7 @@ class Framework(Bundle):
                 BundleEvent(BundleEvent.STOPPED, self)
             )
 
-            # All bundles have been stopped, release "wait_for_stop"
+            # All ycappuccino have been stopped, release "wait_for_stop"
             self._fw_stop_event.set()
 
             # Force the registry clean up
@@ -1571,7 +1571,7 @@ class BundleContext(object):
     def get_bundles(self):
         # type: () -> List[Bundle]
         """
-        Returns the list of all installed bundles
+        Returns the list of all installed ycappuccino
 
         :return: A list of :class:`~pelix.framework.Bundle` objects
         """
@@ -1693,7 +1693,7 @@ class BundleContext(object):
 
         :param path: Path of the package (folder)
         :param recursive: If True, installs the modules found in sub-directories
-        :return: A 2-tuple, with the list of installed bundles
+        :return: A 2-tuple, with the list of installed ycappuccino
                  (:class:`~pelix.framework.Bundle`) and the list of the names
                  of the modules which import failed.
         :raise ValueError: The given path is invalid
@@ -1713,7 +1713,7 @@ class BundleContext(object):
 
         :param path: Root search path (folder)
         :param visitor: The visiting callable
-        :return: A 2-tuple, with the list of installed bundles
+        :return: A 2-tuple, with the list of installed ycappuccino
                  (:class:`~pelix.framework.Bundle`) and the list of the names
                  of the modules which import failed.
         :raise ValueError: Invalid path or visitor
@@ -1856,7 +1856,7 @@ class FrameworkFactory(object):
             except:
                 _logger.exception("Error stopping the framework")
 
-            # Uninstall its bundles
+            # Uninstall its ycappuccino
             bundles = framework.get_bundles()
             for bundle in bundles:
                 try:
@@ -1889,9 +1889,9 @@ def create_framework(
 ):
     # type: (Union[list, tuple], dict, bool, bool, bool) -> Framework
     """
-    Creates a Pelix framework, installs the given bundles and returns its
+    Creates a Pelix framework, installs the given ycappuccino and returns its
     instance reference.
-    If *auto_start* is True, the framework will be started once all bundles
+    If *auto_start* is True, the framework will be started once all ycappuccino
     will have been installed
     If *wait_for_stop* is True, the method will return only when the framework
     will have stopped. This requires *auto_start* to be True.
@@ -1916,7 +1916,7 @@ def create_framework(
     # Create the framework
     framework = FrameworkFactory.get_framework(properties)
 
-    # Install bundles
+    # Install ycappuccino
     context = framework.get_bundle_context()
     for bundle in bundles:
         context.install_bundle(bundle)

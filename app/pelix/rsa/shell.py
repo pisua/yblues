@@ -304,7 +304,7 @@ class RSACommandHandler(object):
     def remote_admin_event(self, event):
         # type: (RemoteServiceAdminEvent) -> None
         """
-        Handle a remote service admin event
+        Handle a remote service client_pyscript_core event
         """
         if event.get_type() == RemoteServiceAdminEvent.EXPORT_REGISTRATION:
             EDEFWriter().write([event.get_description()], self._edef_filename)

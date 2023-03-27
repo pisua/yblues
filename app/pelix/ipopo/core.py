@@ -1282,7 +1282,7 @@ class _IPopoActivator(object):
 
         :param context: The bundle context
         """
-        # Automatically install handlers bundles
+        # Automatically install handlers ycappuccino
         for handler in BUILTIN_HANDLERS:
             try:
                 bundle = context.install_bundle(handler)
@@ -1335,7 +1335,7 @@ class _IPopoActivator(object):
         # Clean up the service
         self._service._unregister_all_factories()
 
-        # Remove handler bundles
+        # Remove handler ycappuccino
         for bundle in self._bundles:
             bundle.uninstall()
         del self._bundles[:]

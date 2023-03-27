@@ -9,7 +9,7 @@ from models.gig import Gig
 from ycappuccino.core.api import IActivityLogger,  YCappuccino
 from ycappuccino.core.decorator_app import App
 from ycappuccino.storage.api import IManager, IBootStrap
-
+from ycappuccino.rest_app_base.models.ui.client_path import ClientPath
 import logging
 from pelix.ipopo.decorators import ComponentFactory, Requires, Validate, Invalidate, Provides, Instantiate
 
@@ -29,6 +29,7 @@ _logger = logging.getLogger(__name__)
 @Requires("_manager_music", IManager.name, spec_filter="'(item_id=music)'")
 @Requires("_manager_video", IManager.name, spec_filter="'(item_id=video)'")
 @Requires("_manager_organization", IManager.name, spec_filter="'(item_id=organization)'")
+@Requires("_manager_client_path", IManager.name, spec_filter="'(item_id=clientPath)'")
 @Requires("_manager_album", IManager.name, spec_filter="'(item_id=album)'")
 @Requires("_jwt", IJwt.name)
 @App(name="yblues")
@@ -44,6 +45,7 @@ class InitDataBootStrap(IBootStrap):
         self._manager_music = None
         self._manager_video = None
         self._manager_album = None
+        self._manager_client_path = None
         self._log = None
         self._jwt = None
         self._subject = None
@@ -57,6 +59,7 @@ class InitDataBootStrap(IBootStrap):
         self._init_video()
         self._init_album()
         self._init_gig()
+        self._init_client_path()
 
     def _init_member(self):
         # y
@@ -556,6 +559,29 @@ class InitDataBootStrap(IBootStrap):
 
         if self._manager_organization.get_one("organization", w_org._id, self._subject) is None:
             self._manager_organization.up_sert_model(w_org._id, w_org, self._subject)
+
+    def _init_client_path(self):
+
+
+        w_client_path_admin = ClientPath()
+        w_client_path_admin.id("yblues_admin")
+        w_client_path_admin.path("/client_admin")
+        w_client_path_admin.subpath("client_admin")
+        w_client_path_admin.priority(1)
+        w_client_path_admin.type("")
+        w_client_path_admin.secure(False)
+
+        self._manager_client_path.up_sert_model("yblues_admin", w_client_path_admin, self._subject)
+
+        w_client_path_admin = ClientPath()
+        w_client_path_admin.id("yblues_pyscript")
+        w_client_path_admin.path("/client_pyscript_yblues")
+        w_client_path_admin.subpath("client_pyscript_yblues")
+        w_client_path_admin.priority(1)
+        w_client_path_admin.type("pyscript")
+        w_client_path_admin.secure(False)
+
+        self._manager_client_path.up_sert_model("yblues_pyscript", w_client_path_admin, self._subject)
 
     @Validate
     def validate(self, context):

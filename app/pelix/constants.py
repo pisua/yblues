@@ -117,7 +117,7 @@ of FRAMEWORK_UID
 SCOPE_SINGLETON = "singleton"
 """
 Default service scope: the service is a singleton, which means that the service
-object is shared by all bundles
+object is shared by all ycappuccino
 """
 
 SCOPE_BUNDLE = "bundle"
@@ -132,7 +132,7 @@ SCOPE_PROTOTYPE = "prototype"
 """
 Prototype service factory scope: the factory is called each time the caller
 gets the service.
-This allows all bundles to have multiples objects for the same service.
+This allows all ycappuccino to have multiples objects for the same service.
 """
 
 # ------------------------------------------------------------------------------

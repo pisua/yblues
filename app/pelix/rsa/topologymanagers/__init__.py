@@ -174,7 +174,7 @@ class TopologyManager(
         elif kind == ServiceEvent.MODIFIED:
             self._handle_service_modified(service_ref)
 
-    # bundles of EventListenerHook
+    # ycappuccino of EventListenerHook
     def event(self, service_event, listener_dict):
         # type: (ServiceEvent, Dict[Any, Any]) -> None
         self._handle_event(service_event)
@@ -218,7 +218,7 @@ class TopologyManager(
                     ed,
                 )
 
-    # bundles of RemoteServiceAdminListener
+    # ycappuccino of RemoteServiceAdminListener
     def remote_admin_event(self, rsa_event):
         # type: (RemoteServiceAdminEvent) -> None
         kind = rsa_event.get_type()

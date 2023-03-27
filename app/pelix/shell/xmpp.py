@@ -434,7 +434,7 @@ def main(argv=None):
     if not server:
         server = sleekxmpp.JID(args.jid).domain
 
-    # Set the initial bundles
+    # Set the initial ycappuccino
     bundles = [
         "pelix.ipopo.core",
         "pelix.shell.core",

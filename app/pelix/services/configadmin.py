@@ -523,7 +523,7 @@ class _ConfigurationDirectory(object):
     aggregate=True,
     optional=True,
 )
-@Instantiate("pelix-services-configuration-admin")
+@Instantiate("pelix-services-configuration-client_pyscript_core")
 class ConfigurationAdmin(object):
     """
     ConfigurationAdmin basic implementation
@@ -1032,8 +1032,10 @@ class JsonPersistence(object):
 
         # Remove the extension
         try:
-            ext_start = name.index(".config.js")
-            return name[:ext_start] or None
+            if ".config.js" in name:
+                ext_start = name.index(".config.js")
+                return name[:ext_start] or None
+            return None
         except IndexError:
             return None
 
